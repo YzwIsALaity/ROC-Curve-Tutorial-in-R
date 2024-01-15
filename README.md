@@ -1,4 +1,4 @@
-![Cover](https://raw.githubusercontent.com/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%203).jpeg)
+![Cover](https://raw.githubusercontent.com/YzwIsALaity/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%203).jpeg)
 
 In this tutorial, we will explore the application of the `ggplot2` and `plotROC` packages for __visualizing Receiver Operating Characteristic (ROC) curves in R__. ROC curves are commonly examined when assessing machine learning models for binary classification. They are closely associated with the __evaluation metric Area Under the Curve (AUC)__, which quantifies the area beneath a ROC curve in two-dimensional space. While typically used for machine learning models, ROC curves are also relevant for assessing medical tests, particularly those involving continuous biomarkers. In essence, __operating characteristics__ are characterized by a pair of values: __False Positive Fraction (FPF) and True Positive Fraction (TPF), denoted as (FPF, TPF)__. The ROC curve illustrates the complete range of operating characteristics. In general, a pair of operating characteristics can be obtained in a 2-by-2 table as below
 
@@ -48,7 +48,7 @@ Now let's start to talk about the visualization of ROC curve with `ggplot2` and 
 Dt <- read.csv('wiedat2b.csv')
 head(Dt)
 ```
-![](https://raw.githubusercontent.com/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/Dataset.png)
+![](https://raw.githubusercontent.com/YzwIsALaity/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/Dataset.png)
 
 Hence, we intend to illustrate the utilization of these two continuous biomarkers for visualizing ROC curves in the subsequent sections.
 
@@ -93,7 +93,7 @@ p_ROC1 <-
           axis.title.y = element_text(color = 'black', size = 11, face = 'bold'))
 p_ROC1
 ```
-![](https://raw.githubusercontent.com/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%201).jpeg)
+![](https://raw.githubusercontent.com/YzwIsALaity/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%201).jpeg)
 
 In this basic version of the ROC curve, the `geom_roc()` function, by default, exhibits 10 cutoff points along with their associated values, displayed as points on the curve. Note that the value for each cutoff point is indeed the value of the continuous biomarker CA 19-9 in U/mL. Upon initial observation of the figure, __a reasonable cutoff level for CA 19-9 appears to be 21.8 U/mL, where FPF is only 25%, while the associated TPF is slightly greater than 75%. Based on the dataset, this suggests that if a patient without pancreatic cancer has a CA 19-9 level below this cutoff, there's a 25% chance of a false cancer diagnosis. On the other hand, for patients with pancreatic cancer, the test using this cutoff level can detect 75% of true cancer cases__. In the next version, we will illustrate the usage of a 95% confidence region for the selected cutoff point (CA 19-9 = 21.8 U/mL) and display only 5 cutoff points in the ROC curve.
 
@@ -113,7 +113,7 @@ p_ROC2 <-
           axis.title.y = element_text(color = 'black', size = 11, face = 'bold'))
 p_ROC2
 ```
-![](https://raw.githubusercontent.com/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%202).jpeg)
+![](https://raw.githubusercontent.com/YzwIsALaity/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%202).jpeg)
 
 Note that __the confidence region is asymmetric, despite its rectangular shape__. This asymmetry arises because if \((FPF_L, TPF_L)\) and \((FPF_U, TPF_U)\) represent \(1 - \alpha^*\) univariate confidence intervals for FPF and TPF, where \(\alpha^* = 1 - (1-\alpha)^{1/2}\), then the rectangle \(R = (FPF_L, TPF_L) \times (FPF_U, TPF_U)\) forms a \(1 - \alpha\) confidence interval for a pair of (FPF, TPF). (Hint: __statistically, FPF is independent of TPF if data is independent__.) In the next version, we will illustrate how to plot two ROC curves together to compare the performance of two different continuous biomarkers for the diagnosis or prognosis of diseases. We will use the `melt_roc()` function from the `plotROC` package to transform a wide dataset into a long version. By implementing this function, we can create a long dataset and subsequently plot two ROC curves for CA 19-9 and CA 125, each with a distinct color.
 
@@ -141,7 +141,7 @@ p_ROC3 <-
           axis.title.y = element_text(color = 'black', size = 11, face = 'bold'))
 p_ROC3
 ```
-![](https://raw.githubusercontent.com/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%203).jpeg)
+![](https://raw.githubusercontent.com/YzwIsALaity/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%203).jpeg)
 
 In this figure, CA 125 and CA 19-9 are represented by blue and orange, respectively. When controlling FPF to be around 0.25, it is evident that TPF for CA 19-9 exceeds 0.75, while the TPF for CA 125 is approximately 0.50. This observation indicates that, based on this dataset, the performance of CA 19-9 is superior to that of CA 125.
 
@@ -178,6 +178,6 @@ p_ROC4 <-
           axis.title.y = element_text(color = 'black', size = 11, face = 'bold'))
 p_ROC4
 ```
-![](https://raw.githubusercontent.com/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%204).jpeg)
+![](https://raw.githubusercontent.com/YzwIsALaity/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%204).jpeg)
 
 The AUC score for the logistic regression model assessing the binary pancreatic cancer outcome based on the continuous biomarker CA 19-9 is 0.86. This value suggests that the performance of the logistic regression model is decent.
