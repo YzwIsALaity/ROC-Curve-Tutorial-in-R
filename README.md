@@ -1,10 +1,3 @@
----
-title:  "ROC Curve in R with ggplot2"
-mathjax: true
-layout: post
-categories: media
----
-
 ![Cover](https://raw.githubusercontent.com/YzwIsALaity/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/ROC%20Plot%20(Version%203).jpeg)
 
 In this tutorial, we will explore the application of the `ggplot2` and `plotROC` packages for __visualizing Receiver Operating Characteristic (ROC) curves in R__. ROC curves are commonly examined when assessing machine learning models for binary classification. They are closely associated with the __evaluation metric Area Under the Curve (AUC)__, which quantifies the area beneath a ROC curve in two-dimensional space. While typically used for machine learning models, ROC curves are also relevant for assessing medical tests, particularly those involving continuous biomarkers. In essence, __operating characteristics__ are characterized by a pair of values: __False Positive Fraction (FPF) and True Positive Fraction (TPF), denoted as (FPF, TPF)__. The ROC curve illustrates the complete range of operating characteristics. In general, a pair of operating characteristics can be obtained in a 2-by-2 table as below
@@ -51,10 +44,7 @@ Now let's start to talk about the visualization of ROC curve with `ggplot2` and 
 - `CA_125`: it is a protein found in human blood known as cancer antigen 125, measured as a __continuous value in units of U/mL__ (numerical);
 
 - `Pancreatic_Cancer`: it serves as a __binary indicator__ for a patient, distinguishing between non-disease (`Pancreatic_Cancer` = 0) and disease groups (`Pancreatic_Cancer` = 1) (numerical).
-```{r}
-Dt <- read.csv('wiedat2b.csv')
-head(Dt)
-```
+
 ![](https://raw.githubusercontent.com/YzwIsALaity/ROC-Curve-Tutorial-in-R/2bd2adb8eef665384facc3581ca748abd44a6045/Dataset.png)
 
 Hence, we intend to illustrate the utilization of these two continuous biomarkers for visualizing ROC curves in the subsequent sections.
